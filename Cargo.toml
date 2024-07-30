@@ -1,0 +1,10 @@
+[package]
+name = "licitacao360"
+version = "0.1.0"
+authors = ["Guilherme Kirschner <guilhermekscampos@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+druid = "0.8.3"
+image = "0.25.2"
+calamine = "0.25.0"
