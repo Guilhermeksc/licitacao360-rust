@@ -1,3 +1,5 @@
+// utils.rs
+
 use druid::{ImageBuf, piet::ImageFormat};
 use std::path::Path;
 use std::sync::Arc;

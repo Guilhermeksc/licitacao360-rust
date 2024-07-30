@@ -1,6 +1,3 @@
-
-// src/controller/menu_lateral.rs
-
 use druid::{
     widget::{Flex, Label, Painter, Container, Image},
     Widget, WidgetExt, Color, FontDescriptor, FontFamily, UnitPoint, RenderContext, Env,
@@ -8,7 +5,7 @@ use druid::{
 use druid::ImageBuf;
 use crate::AppState;
 use crate::utils::load_image;
-use crate::paths::Paths;
+use crate::database::Paths;
 
 pub const BUTTON_HEIGHT: f64 = 35.0;
 pub const BUTTON_WIDTH: f64 = 165.0;
@@ -22,7 +19,7 @@ pub fn create_menu_buttons(paths: &Paths) -> Flex<AppState> {
         .with_child(create_custom_button("Contratos", BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_FONT_SIZE))
         .with_child(create_custom_button("Dispensa Eletrônica", BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_FONT_SIZE))
         .with_child(create_custom_button("Matriz de Riscos", BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_FONT_SIZE))
-        .with_child(create_custom_button("Selenium", BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_FONT_SIZE))
+        .with_child(create_custom_button("Automações", BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_FONT_SIZE))
         .with_flex_spacer(1.0);
 
     let image_path = paths.menu_image_path();

@@ -1,4 +1,4 @@
-// src/modules/atas/automacoes.rs
+// src/modules/planejamento/view.rs
 
 use druid::widget::Flex;
 use druid::{Color, FontWeight, TextAlignment, Widget, WidgetExt};
@@ -10,7 +10,7 @@ pub struct Planejamento;
 impl Planejamento {
     pub fn build() -> impl Widget<AppState> {
         let title = create_title_content(
-            "Início",
+            "Planejamento",
             30.0,
             Color::WHITE,
             FontWeight::BOLD,

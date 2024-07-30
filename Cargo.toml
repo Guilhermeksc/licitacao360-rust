@@ -6,5 +6,11 @@ edition = "2021"
 
 [dependencies]
 druid = "0.8.3"
+druid-shell = { version = "0.8.3", features = ["gtk"] }
 image = "0.25.2"
 calamine = "0.25.0"
+anyhow = "1.0.86"
+parquet = "52.2.0"
+polars = { version = "0.41.3", features = ["lazy", "parquet", "serde"] }
+serde = { version = "1.0.204", features = ["derive"] }
+gtk = "0.16.0"

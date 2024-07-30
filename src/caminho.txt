@@ -1,0 +1,48 @@
+licitacao360/
+├── Cargo.toml
+└── src/
+    ├── main.rs
+    ├── paths.rs
+    ├── utils.rs
+    ├── database/
+    │   ├── planejamento.parquet
+    ├── resources/
+    │   ├── icons/
+    │   ├── images/
+    ├── controller/
+    │   ├── menu_lateral.rs
+    │   ├── menu_superior.rs
+    │   ├── planejamento.rs
+    │   ├── contratos.rs
+    │   ├── dispensa_eletronica.rs
+    │   └── mod.rs
+    ├── modules/
+    │   ├── mod.rs
+    │   ├── inicio/
+    │   │   ├── mod.rs
+    │   │   ├── model.rs
+    │   │   └── view.rs
+    │   ├── planejamento/
+    │   │   ├── mod.rs
+    │   │   ├── model.rs
+    │   │   └── view.rs
+    │   ├── dispensa_eletronica/
+    │   │   ├── mod.rs
+    │   │   ├── model.rs
+    │   │   └── view.rs
+    │   ├── atas/
+    │   │   ├── mod.rs
+    │   │   ├── model.rs
+    │   │   └── view.rs
+    │   ├── contratos/
+    │   │   ├── mod.rs
+    │   │   ├── model.rs
+    │   │   └── view.rs
+    │   ├── matriz_riscos/
+    │   │   ├── mod.rs
+    │   │   ├── model.rs
+    │   │   └── view.rs
+    │   └── automacoes/
+    │       ├── mod.rs
+    │       ├── model.rs
+    │       └── view.rs
