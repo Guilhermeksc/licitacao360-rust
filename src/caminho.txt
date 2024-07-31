@@ -4,7 +4,12 @@ licitacao360/
     ├── main.rs
     ├── paths.rs
     ├── utils.rs
+    ├── data_wrapper.rs
     ├── database/
+    │   ├── atas.parquet
+    │   ├── contratos.parquet
+    │   ├── dispensa_eletronica.parquet
+    │   ├── matriz_riscos.parquet
     │   ├── planejamento.parquet
     ├── resources/
     │   ├── icons/
@@ -12,37 +17,42 @@ licitacao360/
     ├── controller/
     │   ├── menu_lateral.rs
     │   ├── menu_superior.rs
-    │   ├── planejamento.rs
-    │   ├── contratos.rs
-    │   ├── dispensa_eletronica.rs
     │   └── mod.rs
     ├── modules/
     │   ├── mod.rs
     │   ├── inicio/
+    │   │   ├── controller.rs    
     │   │   ├── mod.rs
     │   │   ├── model.rs
     │   │   └── view.rs
     │   ├── planejamento/
+    │   │   ├── controller.rs   
     │   │   ├── mod.rs
     │   │   ├── model.rs
+    │   │   ├── planejamento_data.rs
     │   │   └── view.rs
     │   ├── dispensa_eletronica/
+    │   │   ├── controller.rs       
     │   │   ├── mod.rs
     │   │   ├── model.rs
     │   │   └── view.rs
     │   ├── atas/
+    │   │   ├── controller.rs       
     │   │   ├── mod.rs
     │   │   ├── model.rs
     │   │   └── view.rs
     │   ├── contratos/
+    │   │   ├── controller.rs           
     │   │   ├── mod.rs
     │   │   ├── model.rs
     │   │   └── view.rs
     │   ├── matriz_riscos/
+    │   │   ├── controller.rs       
     │   │   ├── mod.rs
     │   │   ├── model.rs
     │   │   └── view.rs
     │   └── automacoes/
+    │   │   ├── controller.rs       
     │       ├── mod.rs
     │       ├── model.rs
     │       └── view.rs

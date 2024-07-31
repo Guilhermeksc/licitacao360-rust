@@ -28,3 +28,25 @@ pub fn create_title_content(text: &str, text_size: f64, text_color: Color, weigh
         .with_text_alignment(alignment)
         .padding(padding)
 }
+
+use polars::prelude::*;
+use std::fs::File;
+use crate::paths::Paths;
+
+pub fn load_or_create(paths: &Paths, parquet_filename: &str, series: Vec<Series>) -> DataFrame {
+    let parquet_path = paths.parquet_files.iter()
+        .find(|path| path.0.ends_with(parquet_filename))
+        .expect(&format!("Failed to find {}", parquet_filename));
+
+    if parquet_path.0.exists() {
+        LazyFrame::scan_parquet(parquet_path.0.to_str().unwrap(), Default::default())
+            .expect(&format!("Failed to read {}", parquet_filename))
+            .collect()
+            .expect("Failed to collect LazyFrame to DataFrame")
+    } else {
+        let mut df = DataFrame::new(series).expect("Failed to create DataFrame");
+        let file = File::create(&parquet_path.0).expect("Failed to create Parquet file");
+        ParquetWriter::new(file).finish(&mut df).expect("Failed to write Parquet file");
+        df
+    }
+}

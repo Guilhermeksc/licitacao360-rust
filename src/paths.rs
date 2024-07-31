@@ -18,12 +18,7 @@ pub struct Paths {
     pub database_dir: DataPath,
     pub icons_path: DataPath,
     pub images_path: DataPath,
-    pub contratos_path: DataPath,
-    pub planejamento_path: DataPath,
-    pub atas_path: DataPath,
-    pub dispensa_eletronica_path: DataPath,
-    pub matriz_riscos_path: DataPath,
-    pub automacoes_path: DataPath,
+    pub templates_paths: Vec<DataPath>,
     pub inicio_path: DataPath,
     pub parquet_files: Vec<DataPath>,
 }
@@ -34,15 +29,9 @@ impl Data for Paths {
         self.database_dir.same(&other.database_dir) &&
         self.icons_path.same(&other.icons_path) &&
         self.images_path.same(&other.images_path) &&
-        self.contratos_path.same(&other.contratos_path) &&
-        self.planejamento_path.same(&other.planejamento_path) &&
-        self.atas_path.same(&other.atas_path) &&
-        self.dispensa_eletronica_path.same(&other.dispensa_eletronica_path) &&
-        self.matriz_riscos_path.same(&other.matriz_riscos_path) &&
-        self.automacoes_path.same(&other.automacoes_path) &&
+        self.templates_paths == other.templates_paths &&
         self.inicio_path.same(&other.inicio_path) &&
-        self.parquet_files.len() == other.parquet_files.len() &&
-        self.parquet_files.iter().zip(&other.parquet_files).all(|(a, b)| a.same(b))
+        self.parquet_files == other.parquet_files
     }
 }
 
@@ -52,24 +41,33 @@ impl Paths {
         let database_dir = DataPath(base_path.0.join("src/database"));
 
         let parquet_files = vec![
-            DataPath(database_dir.0.join("contratos.parquet")),
-            DataPath(database_dir.0.join("planejamento.parquet")),
-            DataPath(database_dir.0.join("atas.parquet")),
-            DataPath(database_dir.0.join("dispensa_eletronica.parquet")),
-            DataPath(database_dir.0.join("matriz_riscos.parquet")),
-        ];
+            "contratos.parquet",
+            "planejamento.parquet",
+            "atas.parquet",
+            "dispensa_eletronica.parquet",
+            "matriz_riscos.parquet",
+            "automacoes.parquet"
+        ].into_iter()
+            .map(|file| DataPath(database_dir.0.join(file)))
+            .collect();
+
+        let templates_paths = vec![
+            "src/modules/contratos/templates",
+            "src/modules/planejamento/templates",
+            "src/modules/atas/templates",
+            "src/modules/dispensa_eletronica/templates",
+            "src/modules/matriz_riscos/templates",
+            "src/modules/automacoes/templates"
+        ].into_iter()
+            .map(|dir| DataPath(base_path.0.join(dir)))
+            .collect();
 
         Self {
             base_path: base_path.clone(),
             database_dir,
             icons_path: DataPath(base_path.0.join("src/resources/icons")),
             images_path: DataPath(base_path.0.join("src/resources/images")),
-            contratos_path: DataPath(base_path.0.join("src/modules/contratos/templates")),
-            planejamento_path: DataPath(base_path.0.join("src/modules/planejamento")),
-            atas_path: DataPath(base_path.0.join("src/modules/atas")),
-            dispensa_eletronica_path: DataPath(base_path.0.join("src/modules/dispensa_eletronica")),
-            matriz_riscos_path: DataPath(base_path.0.join("src/modules/matriz_riscos")),
-            automacoes_path: DataPath(base_path.0.join("src/modules/automacoes")),
+            templates_paths,
             inicio_path: DataPath(base_path.0.join("src/modules/inicio")),
             parquet_files,
         }
@@ -107,4 +105,29 @@ impl Paths {
             }
         }
     }
+
+    pub fn atas_parquet_path(&self) -> PathBuf {
+        self.database_dir.0.join("atas.parquet")
+    }
+
+    pub fn matriz_riscos_parquet_path(&self) -> PathBuf {
+        self.database_dir.0.join("matriz_riscos.parquet")
+    }
+
+    pub fn planejamento_parquet_path(&self) -> PathBuf {
+        self.database_dir.0.join("planejamento.parquet")
+    }
+
+    pub fn contratos_parquet_path(&self) -> PathBuf {
+        self.database_dir.0.join("contratos.parquet")
+    }
+
+    pub fn dispensa_eletronica_parquet_path(&self) -> PathBuf {
+        self.database_dir.0.join("dispensa_eletronica.parquet")
+    }
+
+    pub fn automacoes_parquet_path(&self) -> PathBuf {
+        self.database_dir.0.join("automacoes.parquet")
+    }
 }
+    

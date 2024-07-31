@@ -4,7 +4,7 @@ use druid::Data;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use crate::AppState;
-use crate::utils::load_image;
+use crate::utils::utils_load::load_image;
 
 #[derive(Clone, Data, Serialize, Deserialize)]
 pub struct InicioController {

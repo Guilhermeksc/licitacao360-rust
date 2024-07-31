@@ -1,11 +1,11 @@
 use druid::{
     widget::{Flex, Label, Painter, Container, Image},
-    Widget, WidgetExt, Color, FontDescriptor, FontFamily, UnitPoint, RenderContext, Env,
+    Widget, WidgetExt, Color, FontDescriptor, FontFamily, UnitPoint, RenderContext,
 };
 use druid::ImageBuf;
 use crate::AppState;
-use crate::utils::load_image;
-use crate::database::Paths;
+use crate::utils::utils_load::load_image;
+use crate::paths::Paths;
 
 pub const BUTTON_HEIGHT: f64 = 35.0;
 pub const BUTTON_WIDTH: f64 = 165.0;
@@ -45,9 +45,7 @@ pub fn create_custom_button(label: &str, button_width: f64, button_height: f64, 
         .align_vertical(UnitPoint::CENTER);
 
     let painter_label = label_owned.clone();
-    let painter = Painter::new(move |ctx, data: &AppState, _env: &Env| {
-        let _ = _env;
-
+    let painter = Painter::new(move |ctx, data: &AppState, _env| {
         let is_hovered = ctx.is_hot();
         let is_active = ctx.is_active();
         let is_selected = data.current_view == painter_label;
@@ -69,8 +67,7 @@ pub fn create_custom_button(label: &str, button_width: f64, button_height: f64, 
         let rect = size.to_rect();
 
         ctx.fill(rect, &background_color);
-        ctx.stroke(rect.with_size((size.width, border_width)), &border_color, border_width);
-        ctx.stroke(rect.with_origin((0.0, size.height - border_width)).with_size((size.width, border_width)), &border_color, border_width);
+        ctx.stroke(rect.inflate(0.0, border_width), &border_color, border_width);
     });
 
     Container::new(custom_label)

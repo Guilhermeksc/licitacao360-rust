@@ -3,7 +3,7 @@
 use druid::widget::Flex;
 use druid::{Color, FontWeight, TextAlignment, Widget, WidgetExt};
 use crate::AppState;
-use crate::utils::create_title_content;
+use crate::utils::utils_load::create_title_content;
 // Estrutura para a "Controle de Contratos"
 pub struct MatrizRiscos;
 
